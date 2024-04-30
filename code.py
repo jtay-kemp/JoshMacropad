@@ -103,52 +103,78 @@ mediaApp = {               # REQUIRED dict, must be named 'app'
         # COLOR    LABEL    KEY SEQUENCE
         # 1st row ----------
         (0x000000, '', []),
-        (0x000020, 'Vol+', [[ConsumerControlCode.VOLUME_INCREMENT]]),
-        (0x202020, 'Bright+', [[ConsumerControlCode.BRIGHTNESS_INCREMENT]]),
+        (0x000015, 'Vol+', [[ConsumerControlCode.VOLUME_INCREMENT]]),
+        (0x151515, 'Bright+', [[ConsumerControlCode.BRIGHTNESS_INCREMENT]]),
         # 2nd row ----------
         (0x000000, '', []),
-        (0x000020, 'Vol-', [[ConsumerControlCode.VOLUME_DECREMENT]]),
-        (0x202020, 'Bright-', [[ConsumerControlCode.BRIGHTNESS_DECREMENT]]),
+        (0x000015, 'Vol-', [[ConsumerControlCode.VOLUME_DECREMENT]]),
+        (0x151515, 'Bright-', [[ConsumerControlCode.BRIGHTNESS_DECREMENT]]),
         # 3rd row ----------
         (0x000000, '', []),
-        (0x200000, 'Mute', [[ConsumerControlCode.MUTE]]),
+        (0x150000, 'Mute', [[ConsumerControlCode.MUTE]]),
         (0x000000, '', []),
         # 4th row ----------
-        (0x202000, '<<', [[ConsumerControlCode.SCAN_PREVIOUS_TRACK]]),
-        (0x002000, 'Play/Pause', [[ConsumerControlCode.PLAY_PAUSE]]),
-        (0x202000, '>>', [[ConsumerControlCode.SCAN_NEXT_TRACK]]),
+        (0x151500, '<<', [[ConsumerControlCode.SCAN_PREVIOUS_TRACK]]),
+        (0x001500, 'Play/Pause', [[ConsumerControlCode.PLAY_PAUSE]]),
+        (0x151500, '>>', [[ConsumerControlCode.SCAN_NEXT_TRACK]]),
         # Encoder button ---
         (0x000000, '', [])
     ]
 }
 
-blankApp = {                      # REQUIRED dict, must be named 'app'
+blankBrightApp = {                      # REQUIRED dict, must be named 'app'
     'name' : '',             # Application name
     'macros' : [             # List of button macros...
         # COLOR    LABEL    KEY SEQUENCE
         # 1st row ----------
-        (0x000000, 'Josh\'s',          []),
-        (0x000000, '',          []),
-        (0x000000, '',          []),
+        (0xee3300, 'Josh\'s',          []),
+        (0xee3300, '',          []),
+        (0xee3300, '',          []),
         # 2nd row ----------
-        (0x000000, 'Macros',          []),
-        (0x000000, '',          []),
-        (0x000000, '',          []),
+        (0xee3300, 'Macros',          []),
+        (0xee3300, '',          []),
+        (0xee3300, '',          []),
         # 3rd row ----------
-        (0x000000, '',          []),
-        (0x000000, '',          []),
-        (0x000000, '',          []),
+        (0xee3300, '(Bright)',          []),
+        (0xee3300, '',          []),
+        (0xee3300, '',          []),
         # 4th row ----------
-        (0x000000, '',          []),
-        (0x000000, '',          []),
-        (0x000000, '',          []),
+        (0xee3300, '',          []),
+        (0xee3300, '',          []),
+        (0xee3300, '',          []),
         # Encoder button ---
-        (0x000000, '',          [])
+        (0xee3300, '',          [])
+    ]
+}
+
+blankDimApp = {                      # REQUIRED dict, must be named 'app'
+    'name' : '',             # Application name
+    'macros' : [             # List of button macros...
+        # COLOR    LABEL    KEY SEQUENCE
+        # 1st row ----------
+        (0x661100, 'Josh\'s',          []),
+        (0x661100, '',          []),
+        (0x661100, '',          []),
+        # 2nd row ----------
+        (0x661100, 'Macros',          []),
+        (0x661100, '',          []),
+        (0x661100, '',          []),
+        # 3rd row ----------
+        (0x661100, '(Dim)',          []),
+        (0x661100, '',          []),
+        (0x661100, '',          []),
+        # 4th row ----------
+        (0x661100, '',          []),
+        (0x661100, '',          []),
+        (0x661100, '',          []),
+        # Encoder button ---
+        (0x661100, '',          [])
     ]
 }
 
 apps.append(App(mediaApp))
-apps.append(App(blankApp))
+apps.append(App(blankBrightApp))
+apps.append(App(blankDimApp))
 
 if not apps:
     group[13].text = 'NO MACRO FILES FOUND'
