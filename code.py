@@ -102,21 +102,21 @@ mediaApp = {               # REQUIRED dict, must be named 'app'
     'macros' : [      # List of button macros...
         # COLOR    LABEL    KEY SEQUENCE
         # 1st row ----------
-        (0x000000, '', []),
-        (0x000015, 'Vol+', [[ConsumerControlCode.VOLUME_INCREMENT]]),
-        (0x151515, 'Bright+', [[ConsumerControlCode.BRIGHTNESS_INCREMENT]]),
+        (0x040100, '', []),
+        (0x441100, 'Vol+', [[ConsumerControlCode.VOLUME_INCREMENT]]),
+        (0xa42100, 'Bright+', [[ConsumerControlCode.BRIGHTNESS_INCREMENT]]),
         # 2nd row ----------
-        (0x000000, '', []),
-        (0x000015, 'Vol-', [[ConsumerControlCode.VOLUME_DECREMENT]]),
-        (0x151515, 'Bright-', [[ConsumerControlCode.BRIGHTNESS_DECREMENT]]),
+        (0x040100, '', []),
+        (0x441100, 'Vol-', [[ConsumerControlCode.VOLUME_DECREMENT]]),
+        (0x240900, 'Bright-', [[ConsumerControlCode.BRIGHTNESS_DECREMENT]]),
         # 3rd row ----------
-        (0x000000, '', []),
-        (0x150000, 'Mute', [[ConsumerControlCode.MUTE]]),
-        (0x000000, '', []),
+        (0x040100, '', []),
+        (0x440600, 'Mute', [[ConsumerControlCode.MUTE]]),
+        (0x040100, '', []),
         # 4th row ----------
-        (0x151500, '<<', [[ConsumerControlCode.SCAN_PREVIOUS_TRACK]]),
-        (0x001500, 'Play/Pause', [[ConsumerControlCode.PLAY_PAUSE]]),
-        (0x151500, '>>', [[ConsumerControlCode.SCAN_NEXT_TRACK]]),
+        (0x340200, '<<', [[ConsumerControlCode.SCAN_PREVIOUS_TRACK]]),
+        (0x840200, 'Play/Pause', [[ConsumerControlCode.PLAY_PAUSE]]),
+        (0x340200, '>>', [[ConsumerControlCode.SCAN_NEXT_TRACK]]),
         # Encoder button ---
         (0x000000, '', [])
     ]
@@ -152,29 +152,55 @@ blankDimApp = {                      # REQUIRED dict, must be named 'app'
     'macros' : [             # List of button macros...
         # COLOR    LABEL    KEY SEQUENCE
         # 1st row ----------
-        (0x661100, 'Josh\'s',          []),
-        (0x661100, '',          []),
-        (0x661100, '',          []),
+        (0x441100, 'Josh\'s',          []),
+        (0x441100, '',          []),
+        (0x441100, '',          []),
         # 2nd row ----------
-        (0x661100, 'Macros',          []),
-        (0x661100, '',          []),
-        (0x661100, '',          []),
+        (0x441100, 'Macros',          []),
+        (0x441100, '',          []),
+        (0x441100, '',          []),
         # 3rd row ----------
-        (0x661100, '(Dim)',          []),
-        (0x661100, '',          []),
-        (0x661100, '',          []),
+        (0x441100, '(Dim)',          []),
+        (0x441100, '',          []),
+        (0x441100, '',          []),
         # 4th row ----------
-        (0x661100, '',          []),
-        (0x661100, '',          []),
-        (0x661100, '',          []),
+        (0x441100, '',          []),
+        (0x441100, '',          []),
+        (0x441100, '',          []),
         # Encoder button ---
-        (0x661100, '',          [])
+        (0x441100, '',          [])
+    ]
+}
+
+blankApp = {                      # REQUIRED dict, must be named 'app'
+    'name' : '',             # Application name
+    'macros' : [             # List of button macros...
+        # COLOR    LABEL    KEY SEQUENCE
+        # 1st row ----------
+        (0x000000, 'Josh\'s',          []),
+        (0x000000, '',          []),
+        (0x000000, '',          []),
+        # 2nd row ----------
+        (0x000000, 'Macros',          []),
+        (0x000000, '',          []),
+        (0x000000, '',          []),
+        # 3rd row ----------
+        (0x000000, '(Off)',          []),
+        (0x000000, '',          []),
+        (0x000000, '',          []),
+        # 4th row ----------
+        (0x000000, '',          []),
+        (0x000000, '',          []),
+        (0x000000, '',          []),
+        # Encoder button ---
+        (0x000000, '',          [])
     ]
 }
 
 apps.append(App(mediaApp))
-apps.append(App(blankBrightApp))
 apps.append(App(blankDimApp))
+apps.append(App(blankBrightApp))
+apps.append(App(blankApp))
 
 if not apps:
     group[13].text = 'NO MACRO FILES FOUND'
@@ -230,7 +256,7 @@ while True:
         # List []: one or more Consumer Control codes (can also do float delay)
         # Dict {}: mouse buttons/motion (might extend in future)
         if key_number < 12: # No pixel for encoder button
-            macropad.pixels[key_number] = 0xFFFFFF
+            macropad.pixels[key_number] = 0x0b0501
             macropad.pixels.show()
         for item in sequence:
             if isinstance(item, int):
